@@ -1,22 +1,18 @@
+import 'dart:async';
+
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart';
-import 'package:movie_app/data/core/api_client.dart';
-import 'package:movie_app/data/data_sources/movie_remote_data_source.dart';
-import 'package:movie_app/data/repositories/movie_repository_imple.dart';
 import 'package:movie_app/domain/entities/app_error.dart';
 import 'package:movie_app/domain/entities/movie_entity.dart';
 import 'package:movie_app/domain/entities/no_params.dart';
-import 'package:movie_app/domain/repsitories/movie_repository.dart';
 import 'package:movie_app/domain/usecases/get_trending.dart';
 
-Future<void> main() async {
-  ApiClient apiClient = ApiClient(Client());
-  MovieRemoteDataSource dataSource = MovieRemoteDataSourceImpl(apiClient);
+import 'di/get_it.dart' as getIt;
 
-  MovieRepository movieRepository = MovieRepositoryImpl(dataSource);
+Future<void> main() async {
+  unawaited(getIt.init());
   // movieRepository.getTrending();
-  GetTrending getTrending = GetTrending(movieRepository);
+  GetTrending getTrending = getIt.getItInstanse<GetTrending>();
   final Either<AppError, List<MovieEntity>?> eitherResponse =
       await getTrending(NoParams());
   // useing fold to get the value of either left or right
