@@ -7,7 +7,7 @@ class MovieEntity extends Equatable {
   final String title;
   final num voteAverage;
   final String releaseDate;
-  final String overview;
+  final String? overview;
 
   MovieEntity({
     required this.posterPath,
@@ -16,7 +16,7 @@ class MovieEntity extends Equatable {
     required this.title,
     required this.voteAverage,
     required this.releaseDate,
-    required this.overview,
+    this.overview,
   }) : assert(id != null, 'Movie id must not be null');
 
   @override

@@ -1,8 +1,4 @@
-import 'dart:convert';
-
-import 'package:http/http.dart';
 import 'package:movie_app/data/core/api_client.dart';
-import 'package:movie_app/data/core/api_constants.dart';
 import 'package:movie_app/data/models/movie_model.dart';
 import 'package:movie_app/data/models/movies_result_model.dart';
 
@@ -10,7 +6,7 @@ abstract class MovieRemoteDataSource {
   Future<List<MovieModel>> getTrending();
   Future<List<MovieModel>> getPopular();
   Future<List<MovieModel>> getPlayingNow();
-  Future<List<MovieModel>> getCommingSoon();
+  Future<List<MovieModel>> getComingSoon();
 }
 
 class MovieRemoteDataSourceImpl extends MovieRemoteDataSource {
@@ -18,10 +14,12 @@ class MovieRemoteDataSourceImpl extends MovieRemoteDataSource {
 
   MovieRemoteDataSourceImpl(this._client);
 
+// This method will call TMDb API for trending movies by day.
   @override
   Future<List<MovieModel>> getTrending() async {
     final response = await _client.get('trending/movie/day');
-    final movies = MoviesResultModel.fromJson(response).movies;
+    final movies = MoviesResultModel.fromJson(response)
+        .movies; // get movies from the MovieResultModel
     print(movies);
     return movies!;
   }
@@ -29,13 +27,14 @@ class MovieRemoteDataSourceImpl extends MovieRemoteDataSource {
   @override
   Future<List<MovieModel>> getPopular() async {
     final response = await _client.get('movie/popular');
-    final movies = MoviesResultModel.fromJson(response).movies;
+    final movies = MoviesResultModel.fromJson(response)
+        .movies; // to parse the JSON response to the model
     print(movies);
     return movies!;
   }
 
   @override
-  Future<List<MovieModel>> getCommingSoon() async {
+  Future<List<MovieModel>> getComingSoon() async {
     final response = await _client.get('movie/upcoming');
     final movies = MoviesResultModel.fromJson(response).movies;
     print(movies);

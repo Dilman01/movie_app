@@ -9,7 +9,7 @@ void main() {
   dataSource.getTrending();
   dataSource.getPopular();
 
-  dataSource.getCommingSoon();
+  dataSource.getComingSoon();
   dataSource.getPlayingNow();
   runApp(const MyApp());
 }

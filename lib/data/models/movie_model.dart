@@ -1,5 +1,9 @@
 import 'package:movie_app/domain/entities/movie_entity.dart';
 
+// To properly tie MovieModel and MovieEntity and execute Clean architecture,
+// extend MovieModel with MovieEntity.
+// This will help in separating the Domain and Data Layer.
+
 class MovieModel extends MovieEntity {
   final bool? adult;
   final String backdropPath;
@@ -55,10 +59,10 @@ class MovieModel extends MovieEntity {
       posterPath: json['poster_path'],
       mediaType: json['media_type'],
       genreIds: json['genre_ids'].cast<int>(),
-      popularity: json['popularity'].toDouble() ?? 0.0,
+      popularity: json['popularity']?.toDouble() ?? 0.0,
       releaseDate: json['release_date'],
       video: json['video'],
-      voteAverage: json['vote_average'].toDouble() ?? 0.0,
+      voteAverage: json['vote_average']?.toDouble() ?? 0.0,
       voteCount: json['vote_count'],
     );
   }
