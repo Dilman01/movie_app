@@ -9,6 +9,7 @@ import 'package:movie_app/domain/entities/no_params.dart';
 import 'package:movie_app/domain/usecases/get_trending.dart';
 
 import 'di/get_it.dart' as getIt;
+import 'presentation/movie_app.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();

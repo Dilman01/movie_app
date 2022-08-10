@@ -4,6 +4,8 @@ import 'package:movie_app/common/screenutil/screenutil.dart';
 import 'package:movie_app/presentation/themes/theme_color.dart';
 import 'package:movie_app/presentation/themes/theme_text.dart';
 
+import 'journeys/home/home_screen.dart';
+
 class MovieApp extends StatelessWidget {
   const MovieApp({super.key});
 

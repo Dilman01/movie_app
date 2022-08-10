@@ -10,9 +10,9 @@ part 'movie_carousel_state.dart';
 class MovieCarouselBloc extends Bloc<MovieCarouselEvent, MovieCarouselState> {
   final GetTrending getTrending;
 
-  MovieCarouselBloc({
-    required this.getTrending,
-  }) : super(MovieCarouselInitial());
+  // MovieCarouselBloc({
+  //   required this.getTrending,
+  // }) : super(MovieCarouselInitial());
 
   @override
   Stream<MovieCarouselState> mapEventToState(
@@ -29,9 +29,10 @@ class MovieCarouselBloc extends Bloc<MovieCarouselEvent, MovieCarouselState> {
     }
   }
 
-  // MovieCarouselBloc() : super(MovieCarouselInitial()) {
-  //   on<MovieCarouselEvent>((event, emit) {
-  //     // TODO: implement event handler
-  //   });
-  // }
+  MovieCarouselBloc({required this.getTrending})
+      : super(MovieCarouselInitial()) {
+    on<MovieCarouselEvent>((event, emit) {
+      // TODO: implement event handler
+    });
+  }
 }
