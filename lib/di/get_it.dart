@@ -8,6 +8,7 @@ import 'package:movie_app/domain/usecases/get_coming_soon.dart';
 import 'package:movie_app/domain/usecases/get_playing_now.dart';
 import 'package:movie_app/domain/usecases/get_popular.dart';
 import 'package:movie_app/domain/usecases/get_trending.dart';
+import 'package:movie_app/presentation/blocs/movie_carousel/movie_carousel_bloc.dart';
 
 final getItInstanse = GetIt.I;
 
@@ -36,4 +37,10 @@ Future init() async {
 
   getItInstanse.registerLazySingleton<MovieRepository>(
       () => MovieRepositoryImpl(getItInstanse()));
+
+  getItInstanse.registerFactory(
+    () => MovieCarouselBloc(
+      getTrending: getItInstanse(),
+    ),
+  );
 }
