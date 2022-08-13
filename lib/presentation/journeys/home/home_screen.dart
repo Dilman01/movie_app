@@ -18,9 +18,12 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    movieCarouselBloc = getItInstanse<MovieCarouselBloc>();
+    movieCarouselBloc = getItInstance<MovieCarouselBloc>();
     movieBackdropBloc = movieCarouselBloc!.movieBackdropBloc;
-    movieCarouselBloc!.add(const CarouselLoadEvent());
+    // When the home screen initializes,
+    // dispatch the only event for MovieCarouselBloc
+    // This will make an API call and yield the MovieCarouselLoaded or MovieCarouselError state.
+    movieCarouselBloc!.add(CarouselLoadEvent());
   }
 
   @override
@@ -42,12 +45,14 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ],
       child: Scaffold(
+        // to read the current state of MovieCarouselBloc
         body: BlocBuilder<MovieCarouselBloc, MovieCarouselState>(
           bloc: movieCarouselBloc,
           builder: (context, state) {
             if (state is MovieCarouselLoaded) {
               return Stack(
-                fit: StackFit.expand,
+                fit: StackFit
+                    .expand, // allows the stack to take the availble space.
                 children: <Widget>[
                   FractionallySizedBox(
                     alignment: Alignment.topCenter,

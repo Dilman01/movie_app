@@ -22,12 +22,14 @@ class MovieCarouselBloc extends Bloc<MovieCarouselEvent, MovieCarouselState> {
 
   @override
   Stream<MovieCarouselState> mapEventToState(
-    CarouselLoadEvent event,
+    MovieCarouselEvent event,
   ) async* {
     if (event is CarouselLoadEvent) {
       final moviesEither = await getTrending(NoParams());
       yield moviesEither.fold(
+        // when an error left
         (l) => MovieCarouselError(),
+        // when success right
         (movies) {
           movieBackdropBloc
               .add(MovieBackdropChangedEvent(movies![event.defaultIndex]));

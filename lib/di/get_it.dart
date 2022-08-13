@@ -12,40 +12,40 @@ import 'package:movie_app/presentation/blocs/movie_carousel/movie_carousel_bloc.
 
 import '../presentation/blocs/movie_backdrop/movie_backdrop_bloc.dart';
 
-final getItInstanse = GetIt.I;
+final getItInstance = GetIt.I;
 
 Future init() async {
-  getItInstanse.registerLazySingleton<Client>(() => Client());
+  getItInstance.registerLazySingleton<Client>(() => Client());
 
 // As, we’ve asked GetIt to initialize Client for us,
 // so we rely on getItInstance() to provide Client to ApiClient instance.
-  getItInstanse
-      .registerLazySingleton<ApiClient>(() => ApiClient(getItInstanse()));
+  getItInstance
+      .registerLazySingleton<ApiClient>(() => ApiClient(getItInstance()));
 
-  getItInstanse.registerLazySingleton<MovieRemoteDataSource>(
-      () => MovieRemoteDataSourceImpl(getItInstanse()));
+  getItInstance.registerLazySingleton<MovieRemoteDataSource>(
+      () => MovieRemoteDataSourceImpl(getItInstance()));
 
-  getItInstanse
-      .registerLazySingleton<GetTrending>(() => GetTrending(getItInstanse()));
+  getItInstance
+      .registerLazySingleton<GetTrending>(() => GetTrending(getItInstance()));
 
-  getItInstanse
-      .registerLazySingleton<GetPopular>(() => GetPopular(getItInstanse()));
+  getItInstance
+      .registerLazySingleton<GetPopular>(() => GetPopular(getItInstance()));
 
-  getItInstanse.registerLazySingleton<GetPlayingNow>(
-      () => GetPlayingNow(getItInstanse()));
+  getItInstance.registerLazySingleton<GetPlayingNow>(
+      () => GetPlayingNow(getItInstance()));
 
-  getItInstanse.registerLazySingleton<GetComingSoon>(
-      () => GetComingSoon(getItInstanse()));
+  getItInstance.registerLazySingleton<GetComingSoon>(
+      () => GetComingSoon(getItInstance()));
 
-  getItInstanse.registerLazySingleton<MovieRepository>(
-      () => MovieRepositoryImpl(getItInstanse()));
+  getItInstance.registerLazySingleton<MovieRepository>(
+      () => MovieRepositoryImpl(getItInstance()));
 
-  getItInstanse.registerFactory(() => MovieBackdropBloc());
+  getItInstance.registerFactory(() => MovieBackdropBloc());
 
-  getItInstanse.registerFactory(
+  getItInstance.registerFactory(
     () => MovieCarouselBloc(
-      getTrending: getItInstanse(),
-      movieBackdropBloc: getItInstanse(),
+      getTrending: getItInstance(),
+      movieBackdropBloc: getItInstance(),
     ),
   );
 }

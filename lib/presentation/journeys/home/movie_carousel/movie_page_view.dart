@@ -32,7 +32,7 @@ class _MoviePageViewState extends State<MoviePageView> {
     _pageController = PageController(
       initialPage: widget.initialPage,
       keepPage: false,
-      viewportFraction: 0.7,
+      viewportFraction: 0.7, // how much screen share each of items will take
     );
   }
 
@@ -60,6 +60,7 @@ class _MoviePageViewState extends State<MoviePageView> {
         },
         pageSnapping: true,
         itemCount: widget.movies.length,
+        // dispatch the MovieBackdropChangedEvent when the page changes:
         onPageChanged: (index) {
           BlocProvider.of<MovieBackdropBloc>(context)
               .add(MovieBackdropChangedEvent(widget.movies[index]));

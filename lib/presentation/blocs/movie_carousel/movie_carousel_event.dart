@@ -8,7 +8,8 @@ abstract class MovieCarouselEvent extends Equatable {
 }
 
 class CarouselLoadEvent extends MovieCarouselEvent {
-  final int defaultIndex;
+  final int
+      defaultIndex; // to decide which movie will be in the center of our carousel at the start
 
   const CarouselLoadEvent({this.defaultIndex = 0})
       : assert(defaultIndex >= 0, 'defaultIndex cannot be less than 0');
