@@ -9,7 +9,7 @@ abstract class MovieCarouselState extends Equatable {
 
 class MovieCarouselInitial extends MovieCarouselState {}
 
-class MovieCarouseError extends MovieCarouselState {}
+class MovieCarouselError extends MovieCarouselState {}
 
 class MovieCarouselLoaded extends MovieCarouselState {
   final List<MovieEntity> movies;

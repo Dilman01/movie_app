@@ -1,12 +1,9 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'dart:async';
 
-import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:movie_app/domain/entities/app_error.dart';
-import 'package:movie_app/domain/entities/movie_entity.dart';
-import 'package:movie_app/domain/entities/no_params.dart';
-import 'package:movie_app/domain/usecases/get_trending.dart';
 
 import 'di/get_it.dart' as getIt;
 import 'presentation/movie_app.dart';
