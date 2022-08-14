@@ -5,7 +5,7 @@ import '../../../../common/constants/size_constants.dart';
 import '../../../../common/extensions/size_extensions.dart';
 import '../../../../common/screenutil/screenutil.dart';
 import '../../../../domain/entities/movie_entity.dart';
-import '../../../blocs/movie_backdrop/movie_backdrop_bloc.dart';
+import '../../../blocs/movie_backdrop/movie_backdrop_cubit.dart';
 import 'animated_movie_card_widget.dart';
 
 class MoviePageView extends StatefulWidget {
@@ -62,8 +62,8 @@ class _MoviePageViewState extends State<MoviePageView> {
         itemCount: widget.movies.length,
         // dispatch the MovieBackdropChangedEvent when the page changes:
         onPageChanged: (index) {
-          BlocProvider.of<MovieBackdropBloc>(context)
-              .add(MovieBackdropChangedEvent(widget.movies[index]));
+          BlocProvider.of<MovieBackdropCubit>(context)
+              .backdropChanged(widget.movies[index]);
         },
       ),
     );
