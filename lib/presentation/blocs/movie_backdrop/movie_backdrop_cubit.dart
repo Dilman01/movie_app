@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-// import 'package:movieapp/domain/entities/movie_entity.dart';
+// import '/domain/entities/movie_entity.dart';
 
 import '../../../domain/entities/movie_entity.dart';
 

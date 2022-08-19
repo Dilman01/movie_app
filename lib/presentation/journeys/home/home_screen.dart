@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/presentation/blocs/movie_backdrop/movie_backdrop_cubit.dart';
 import 'package:movie_app/presentation/blocs/movie_carousel/movie_carousel_cubit.dart';
+import 'package:movie_app/presentation/blocs/movie_tabbed/movie_tabbed_cubit.dart';
+import 'package:movie_app/presentation/journeys/home/movie_tabbed/movie_tabbed_widget.dart';
 import '/di/get_it.dart';
 
 import 'movie_carousel/movie_carousel_widget.dart';
@@ -14,12 +16,14 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   MovieCarouselCubit? movieCarouselCubit;
   MovieBackdropCubit? movieBackdropCubit;
+  MovieTabbedCubit? movieTabbedCubit;
 
   @override
   void initState() {
     super.initState();
     movieCarouselCubit = getItInstance<MovieCarouselCubit>();
     movieBackdropCubit = movieCarouselCubit!.movieBackdropCubit;
+    movieTabbedCubit = getItInstance<MovieTabbedCubit>();
     // When the home screen initializes,
     // dispatch the only event for MovieCarouselBloc
     // This will make an API call and yield the MovieCarouselLoaded or MovieCarouselError state.
@@ -31,6 +35,7 @@ class _HomeScreenState extends State<HomeScreen> {
     super.dispose();
     movieCarouselCubit!.close();
     movieBackdropCubit!.close();
+    movieTabbedCubit?.close();
   }
 
   @override
@@ -43,13 +48,16 @@ class _HomeScreenState extends State<HomeScreen> {
         BlocProvider<MovieBackdropCubit>(
           create: (context) => movieBackdropCubit!,
         ),
+        BlocProvider<MovieTabbedCubit>(
+          create: (context) => movieTabbedCubit!,
+        ),
       ],
       child: Scaffold(
         // to read the current state of MovieCarouselBloc
         body: BlocBuilder<MovieCarouselCubit, MovieCarouselState>(
-          bloc: movieCarouselCubit,
+          // bloc: movieCarouselCubit,
           builder: (context, state) {
-            // print(state);
+            print(state);
             if (state is MovieCarouselLoaded) {
               return Stack(
                 fit: StackFit
@@ -63,10 +71,10 @@ class _HomeScreenState extends State<HomeScreen> {
                       defaultIndex: state.defaultIndex,
                     ),
                   ),
-                  const FractionallySizedBox(
+                  FractionallySizedBox(
                     alignment: Alignment.bottomCenter,
                     heightFactor: 0.4,
-                    child: Placeholder(color: Colors.white),
+                    child: MovieTabbedWidget(),
                   ),
                 ],
               );
