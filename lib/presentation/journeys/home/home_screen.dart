@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/presentation/blocs/movie_backdrop/movie_backdrop_cubit.dart';
 import 'package:movie_app/presentation/blocs/movie_carousel/movie_carousel_cubit.dart';
 import 'package:movie_app/presentation/blocs/movie_tabbed/movie_tabbed_cubit.dart';
+import 'package:movie_app/presentation/journeys/drawer/navigation_drawer.dart';
 import 'package:movie_app/presentation/journeys/home/movie_tabbed/movie_tabbed_widget.dart';
 import '/di/get_it.dart';
 
@@ -53,6 +54,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ],
       child: Scaffold(
+        drawer: const NavigationDrawer(),
         // to read the current state of MovieCarouselBloc
         body: BlocBuilder<MovieCarouselCubit, MovieCarouselState>(
           // bloc: movieCarouselCubit,
