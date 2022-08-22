@@ -9,5 +9,6 @@ class MovieTabbedConstants {
     const Tab(index: 0, title: 'Popular'),
     const Tab(index: 1, title: 'Now'),
     const Tab(index: 2, title: 'Soon'),
+    const Tab(index: 3, title: 'Top'),
   ];
 }

@@ -11,6 +11,7 @@ import '../../../domain/entities/no_params.dart';
 import '../../../domain/usecases/get_coming_soon.dart';
 import '../../../domain/usecases/get_playing_now.dart';
 import '../../../domain/usecases/get_popular.dart';
+import '../../../domain/usecases/get_top_rated.dart';
 
 part 'movie_tabbed_state.dart';
 
@@ -18,11 +19,13 @@ class MovieTabbedCubit extends Cubit<MovieTabbedState> {
   final GetPopular getPopular;
   final GetPlayingNow getPlayingNow;
   final GetComingSoon getComingSoon;
+  final GetTopRated getTopRated;
 
   MovieTabbedCubit({
     required this.getPopular,
     required this.getPlayingNow,
     required this.getComingSoon,
+    required this.getTopRated,
   }) : super(MovieTabbedInitial());
 
   void movieTabChanged({int currentTabIndex = 0}) async {
@@ -37,6 +40,9 @@ class MovieTabbedCubit extends Cubit<MovieTabbedState> {
         break;
       case 2:
         moviesEither = await getComingSoon(NoParams());
+        break;
+      case 3:
+        moviesEither = await getTopRated(NoParams());
         break;
     }
     emit(moviesEither!.fold(
