@@ -36,13 +36,15 @@ class MovieTabbedCubit extends Cubit<MovieTabbedState> {
         moviesEither = await getPopular(NoParams());
         break;
       case 1:
-        moviesEither = await getPlayingNow(NoParams());
+        moviesEither = await getTopRated(NoParams());
+
         break;
       case 2:
-        moviesEither = await getComingSoon(NoParams());
+        moviesEither = await getPlayingNow(NoParams());
+
         break;
       case 3:
-        moviesEither = await getTopRated(NoParams());
+        moviesEither = await getComingSoon(NoParams());
         break;
     }
     emit(moviesEither!.fold(

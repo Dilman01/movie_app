@@ -5,20 +5,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../domain/entities/movie_entity.dart';
 import '../../../blocs/movie_backdrop/movie_backdrop_cubit.dart';
-import '/common/constants/size_constants.dart';
-import '/common/screenutil/screenutil.dart';
-import '/common/extensions/size_extensions.dart';
+
 import '/data/core/api_constants.dart';
+
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MovieBackdropWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FractionallySizedBox(
       alignment: Alignment.topCenter,
-      heightFactor: 0.7,
+      heightFactor: 0.75,
       child: ClipRRect(
         borderRadius: BorderRadius.vertical(
-          bottom: Radius.circular(Sizes.dimen_40.w),
+          bottom: Radius.circular(40.w),
         ),
         child: Stack(
           children: <Widget>[
@@ -38,7 +38,7 @@ class MovieBackdropWidget extends StatelessWidget {
             BackdropFilter(
               filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
               child: Container(
-                width: ScreenUtil.screenWidth,
+                width: ScreenUtil.defaultSize.width,
                 height: 1,
                 color: Colors.transparent,
               ),

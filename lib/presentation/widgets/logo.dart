@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app/common/extensions/size_extensions.dart';
+
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Logo extends StatelessWidget {
   final double height;

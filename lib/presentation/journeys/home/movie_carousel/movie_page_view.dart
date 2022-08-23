@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../common/constants/size_constants.dart';
-import '../../../../common/extensions/size_extensions.dart';
-import '../../../../common/screenutil/screenutil.dart';
 import '../../../../domain/entities/movie_entity.dart';
 import '../../../blocs/movie_backdrop/movie_backdrop_cubit.dart';
 import 'animated_movie_card_widget.dart';
+
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MoviePageView extends StatefulWidget {
   final List<MovieEntity> movies;
@@ -45,8 +44,8 @@ class _MoviePageViewState extends State<MoviePageView> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(vertical: Sizes.dimen_10.h),
-      height: ScreenUtil.screenHeight * 0.35,
+      margin: EdgeInsets.symmetric(vertical: 10.h),
+      height: ScreenUtil.defaultSize.height * 0.45,
       child: PageView.builder(
         controller: _pageController,
         itemBuilder: (context, index) {

@@ -2,11 +2,12 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:movie_app/common/extensions/string_extensions.dart';
 // import '/common/constants/route_constants.dart';
-import '/common/constants/size_constants.dart';
-import '/common/extensions/size_extensions.dart';
+
 // import '/common/extensions/string_extensions.dart';
 import '/data/core/api_constants.dart';
 // import '/presentation/journeys/movie_detail/movie_detail_arguments.dart';
+
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MovieTabCardWidget extends StatelessWidget {
   final int movieId;
@@ -33,7 +34,7 @@ class MovieTabCardWidget extends StatelessWidget {
         children: <Widget>[
           Expanded(
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(Sizes.dimen_16.w),
+              borderRadius: BorderRadius.circular(16.w),
               child: CachedNetworkImage(
                 imageUrl: '${ApiConstants.BASE_IMAGE_URL}$posterPath',
                 fit: BoxFit.cover,
@@ -41,7 +42,7 @@ class MovieTabCardWidget extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(top: Sizes.dimen_4.h),
+            padding: EdgeInsets.only(top: 4.h),
             child: Text(
               title.intelliTrim(),
               maxLines: 1,

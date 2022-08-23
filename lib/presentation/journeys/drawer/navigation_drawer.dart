@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import '/common/constants/size_constants.dart';
-import '/common/extensions/size_extensions.dart';
+
 import '/presentation/journeys/drawer/navigation_expanded_list_item.dart';
 import '/presentation/journeys/drawer/navigation_list_item.dart';
 import '/presentation/widgets/logo.dart';
+
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class NavigationDrawer extends StatelessWidget {
   const NavigationDrawer();
@@ -19,20 +20,20 @@ class NavigationDrawer extends StatelessWidget {
           ),
         ],
       ),
-      width: Sizes.dimen_300.w,
+      width: 300.w,
       child: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
               padding: EdgeInsets.only(
-                top: Sizes.dimen_8.h,
-                bottom: Sizes.dimen_18.h,
-                left: Sizes.dimen_8.w,
-                right: Sizes.dimen_8.w,
+                top: 40.h,
+                bottom: 45.h,
+                left: 8.w,
+                right: 8.w,
               ),
               child: Logo(
-                height: Sizes.dimen_20.h,
+                height: 135.h,
               ),
             ),
             NavigationListItem(

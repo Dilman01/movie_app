@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app/common/extensions/size_extensions.dart';
-import '/common/constants/size_constants.dart';
-import '/common/screenutil/screenutil.dart';
+
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'movie_card_widget.dart';
 
@@ -32,9 +31,9 @@ class AnimatedMovieCardWidget extends StatelessWidget {
             alignment: Alignment.topCenter,
             child: Container(
               height: Curves.easeIn.transform(value) *
-                  ScreenUtil.screenHeight *
-                  0.35,
-              width: Sizes.dimen_230.w,
+                  ScreenUtil.defaultSize.height *
+                  0.45,
+              width: 230.w,
               child: child,
             ),
           );
@@ -44,9 +43,9 @@ class AnimatedMovieCardWidget extends StatelessWidget {
             child: Container(
               height:
                   Curves.easeIn.transform(index == 0 ? value : value * 0.5) *
-                      ScreenUtil.screenHeight *
-                      0.35,
-              width: Sizes.dimen_230.w,
+                      ScreenUtil.defaultSize.height *
+                      0.45,
+              width: 230.w,
               child: child,
             ),
           );

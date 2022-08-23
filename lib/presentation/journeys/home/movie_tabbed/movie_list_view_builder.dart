@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 import '/domain/entities/movie_entity.dart';
 import 'movie_tab_card_widget.dart';
-import '../../../../common/extensions/size_extensions.dart';
+
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MovieListViewBuilder extends StatelessWidget {
   //1

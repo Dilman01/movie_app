@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '/common/constants/size_constants.dart';
-// import '/common/constants/translation_constants.dart';
-// import '/common/extensions/string_extensions.dart';
-import '/common/extensions/size_extensions.dart';
+
 import '/presentation/blocs/movie_tabbed/movie_tabbed_cubit.dart';
 import '/presentation/journeys/home/movie_tabbed/tab_title_widget.dart';
 // import '/presentation/journeys/loading/loading_circle.dart';
@@ -11,6 +8,8 @@ import '/presentation/journeys/home/movie_tabbed/tab_title_widget.dart';
 
 import 'movie_list_view_builder.dart';
 import 'movie_tabbed_constants.dart';
+
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MovieTabbedWidget extends StatefulWidget {
   @override
@@ -40,7 +39,7 @@ class _MovieTabbedWidgetState extends State<MovieTabbedWidget>
     return BlocBuilder<MovieTabbedCubit, MovieTabbedState>(
       builder: (context, state) {
         return Padding(
-          padding: EdgeInsets.only(top: Sizes.dimen_4.h),
+          padding: EdgeInsets.only(top: 4.h),
           child: Column(
             children: [
               Row(
@@ -85,7 +84,7 @@ class _MovieTabbedWidgetState extends State<MovieTabbedWidget>
               // Expanded(
               //   child: Center(
               //     child: LoadingCircle(
-              //       size: Sizes.dimen_100.w,
+              //       size: 100.w,
               //     ),
               //   ),
               // ),
