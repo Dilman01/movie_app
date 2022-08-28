@@ -2,13 +2,15 @@
 
 // ignore_for_file: unnecessary_const
 
+import 'package:movie_app/common/constants/translation_constants.dart';
+
 import 'tab.dart';
 
 class MovieTabbedConstants {
   static const List<Tab> movieTabs = const [
-    const Tab(index: 0, title: 'Popular'),
-    const Tab(index: 1, title: 'Top'),
-    const Tab(index: 2, title: 'Now'),
-    const Tab(index: 3, title: 'Soon'),
+    const Tab(index: 0, title: TranslationConstants.popular),
+    const Tab(index: 1, title: TranslationConstants.top),
+    const Tab(index: 2, title: TranslationConstants.now),
+    const Tab(index: 3, title: TranslationConstants.soon),
   ];
 }

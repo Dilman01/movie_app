@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app/common/extensions/string_extensions.dart';
 
 import '/presentation/themes/theme_text.dart';
 import '/presentation/themes/theme_color.dart';
@@ -35,7 +36,7 @@ class TabTitleWidget extends StatelessWidget {
           ),
         ),
         child: Text(
-          title, //'popular', 'now', 'soon'
+          title.t(context), //'popular','top', 'now', 'soon'
           style: isSelected
               ? Theme.of(context).textTheme.royalBlueSubtitle1
               : Theme.of(context).textTheme.subtitle1,
