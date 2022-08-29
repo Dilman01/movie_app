@@ -7,6 +7,7 @@ import 'package:movie_app/common/constants/languages.dart';
 import 'package:movie_app/common/constants/translation_constants.dart';
 import 'package:movie_app/common/extensions/string_extensions.dart';
 import 'package:movie_app/presentation/app_localizations.dart';
+import 'package:wiredash/wiredash.dart';
 
 import '/presentation/blocs/language/language_bloc.dart';
 import '/presentation/journeys/drawer/navigation_expanded_list_item.dart';
@@ -60,7 +61,10 @@ class NavigationDrawer extends StatelessWidget {
             ),
             NavigationListItem(
               title: TranslationConstants.feedback.t(context),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).pop();
+                Wiredash.of(context).show();
+              },
             ),
             NavigationListItem(
               title: TranslationConstants.about.t(context),
