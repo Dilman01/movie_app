@@ -10,9 +10,14 @@ import 'package:movie_app/domain/usecases/get_popular.dart';
 import 'package:movie_app/domain/usecases/get_trending.dart';
 import 'package:movie_app/presentation/blocs/movie_backdrop/movie_backdrop_cubit.dart';
 
+import '../data/data_sources/language_local_data_source.dart';
+import '../data/repositories/app_repository_impl.dart';
+import '../domain/repositories/app_repository.dart';
 import '../domain/usecases/get_movie_detail.dart';
+import '../domain/usecases/get_preferred_language.dart';
 import '../domain/usecases/get_top_rated.dart';
-import '../presentation/blocs/language/language_bloc.dart';
+import '../domain/usecases/update_language.dart';
+import '../presentation/blocs/language/language_cubit.dart';
 import '../presentation/blocs/movie_carousel/movie_carousel_cubit.dart';
 import '../presentation/blocs/movie_detail/movie_detail_cubit.dart';
 import '../presentation/blocs/movie_tabbed/movie_tabbed_cubit.dart';
@@ -29,6 +34,9 @@ Future init() async {
 
   getItInstance.registerLazySingleton<MovieRemoteDataSource>(
       () => MovieRemoteDataSourceImpl(getItInstance()));
+
+  getItInstance.registerLazySingleton<LanguageLocalDataSource>(
+      () => LanguageLocalDataSourceImpl());
 
   getItInstance
       .registerLazySingleton<GetTrending>(() => GetTrending(getItInstance()));
@@ -48,8 +56,18 @@ Future init() async {
   getItInstance.registerLazySingleton<GetMovieDetail>(
       () => GetMovieDetail(getItInstance()));
 
+  getItInstance.registerLazySingleton<UpdateLanguage>(
+      () => UpdateLanguage(getItInstance()));
+
+  getItInstance.registerLazySingleton<GetPreferredLanguage>(
+      () => GetPreferredLanguage(getItInstance()));
+
   getItInstance.registerLazySingleton<MovieRepository>(
       () => MovieRepositoryImpl(getItInstance()));
+
+  getItInstance.registerLazySingleton<AppRepository>(() => AppRepositoryImpl(
+        getItInstance(),
+      ));
 
   getItInstance.registerFactory(() => MovieBackdropCubit());
 
@@ -75,5 +93,8 @@ Future init() async {
     ),
   );
 
-  getItInstance.registerSingleton<LanguageBloc>(LanguageBloc());
+  getItInstance.registerSingleton<LanguageCubit>(LanguageCubit(
+    updateLanguage: getItInstance(),
+    getPreferredLanguage: getItInstance(),
+  ));
 }

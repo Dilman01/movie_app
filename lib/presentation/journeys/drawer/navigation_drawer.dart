@@ -9,8 +9,8 @@ import 'package:movie_app/common/extensions/string_extensions.dart';
 import 'package:movie_app/presentation/app_localizations.dart';
 import 'package:wiredash/wiredash.dart';
 
+import '../../blocs/language/language_cubit.dart';
 import '../../widgets/app_dialog.dart';
-import '/presentation/blocs/language/language_bloc.dart';
 import '/presentation/journeys/drawer/navigation_expanded_list_item.dart';
 import '/presentation/journeys/drawer/navigation_list_item.dart';
 import '/presentation/widgets/logo.dart';
@@ -52,13 +52,7 @@ class NavigationDrawer extends StatelessWidget {
             NavigationExpandedListItem(
               title: TranslationConstants.language.t(context),
               children: Languages.languages.map((e) => e.value).toList(),
-              onPressed: (index) {
-                BlocProvider.of<LanguageBloc>(context).add(
-                  ToggleLanguageEvent(
-                    Languages.languages[index],
-                  ),
-                );
-              },
+              onPressed: (index) => _onLanguageSelected(index, context),
             ),
             NavigationListItem(
               title: TranslationConstants.feedback.t(context),
@@ -77,6 +71,12 @@ class NavigationDrawer extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+
+  void _onLanguageSelected(int index, BuildContext context) {
+    BlocProvider.of<LanguageCubit>(context).toggleLanguage(
+      Languages.languages[index],
     );
   }
 
