@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movie_app/common/extensions/string_extensions.dart';
 
+import '../../../../common/constants/translation_constants.dart';
+import '../../../widgets/app_error_widget.dart';
 import '/presentation/blocs/movie_tabbed/movie_tabbed_cubit.dart';
 import '/presentation/journeys/home/movie_tabbed/tab_title_widget.dart';
 // import '/presentation/journeys/loading/loading_circle.dart';
@@ -62,7 +65,7 @@ class _MovieTabbedWidgetState extends State<MovieTabbedWidget>
                     ? Expanded(
                         child: Center(
                           child: Text(
-                            'no mov', // TranslationConstants.noMovies.t(context),
+                            TranslationConstants.noMovies.t(context),
                             textAlign: TextAlign.center,
                             style: Theme.of(context).textTheme.subtitle1,
                           ),
@@ -71,21 +74,21 @@ class _MovieTabbedWidgetState extends State<MovieTabbedWidget>
                     : Expanded(
                         child: MovieListViewBuilder(movies: state.movies!),
                       ),
-              // if (state is MovieTabLoadError)
-              // Expanded(
-              //   // child: AppErrorWidget(
-              //   //   // errorType: state.errorType,
-              //   //   // onPressed: () => movieTabbedCubit.movieTabChanged(
-              //   //   //   currentTabIndex: state.currentTabIndex,
-              //   //   ),
-              //   ),
-              // ),
+              if (state is MovieTabLoadError)
+                Expanded(
+                  child: AppErrorWidget(
+                    errorType: state.errorType,
+                    onPressed: () => movieTabbedCubit.movieTabChanged(
+                      currentTabIndex: state.currentTabIndex!,
+                    ),
+                  ),
+                ),
               // if (state is MovieTabLoading)
               // Expanded(
               //   child: Center(
-              //     child: LoadingCircle(
-              //       size: 100.w,
-              //     ),
+              //     // child: LoadingCircle(
+              //     //   size: 100.w,
+              //     // ),
               //   ),
               // ),
             ],

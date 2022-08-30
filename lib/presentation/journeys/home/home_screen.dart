@@ -5,6 +5,7 @@ import 'package:movie_app/presentation/blocs/movie_carousel/movie_carousel_cubit
 import 'package:movie_app/presentation/blocs/movie_tabbed/movie_tabbed_cubit.dart';
 import 'package:movie_app/presentation/journeys/drawer/navigation_drawer.dart';
 import 'package:movie_app/presentation/journeys/home/movie_tabbed/movie_tabbed_widget.dart';
+import '../../widgets/app_error_widget.dart';
 import '/di/get_it.dart';
 
 import 'movie_carousel/movie_carousel_widget.dart';
@@ -79,6 +80,11 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: MovieTabbedWidget(),
                   ),
                 ],
+              );
+            } else if (state is MovieCarouselError) {
+              return AppErrorWidget(
+                onPressed: () => movieCarouselCubit!.loadCarousel(),
+                errorType: state.errorType,
               );
             }
             return const SizedBox.shrink();

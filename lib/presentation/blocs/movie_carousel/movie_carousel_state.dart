@@ -10,9 +10,9 @@ abstract class MovieCarouselState extends Equatable {
 class MovieCarouselInitial extends MovieCarouselState {}
 
 class MovieCarouselError extends MovieCarouselState {
-  // final AppErrorType errorType;
+  final AppErrorType errorType;
 
-  // const MovieCarouselError(this.errorType);
+  const MovieCarouselError(this.errorType);
 }
 
 class MovieCarouselLoaded extends MovieCarouselState {

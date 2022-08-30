@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../domain/entities/app_error.dart';
 import '/domain/entities/movie_entity.dart';
 import '/domain/entities/no_params.dart';
 import '/domain/usecases/get_trending.dart';
@@ -24,7 +25,7 @@ class MovieCarouselCubit extends Cubit<MovieCarouselState> {
     // loadingCubit.show();
     final moviesEither = await getTrending(NoParams());
     emit(moviesEither.fold(
-      (l) => MovieCarouselError(),
+      (l) => MovieCarouselError(l.appErrorType),
       (movies) {
         movieBackdropCubit.backdropChanged(movies![defaultIndex]);
         return MovieCarouselLoaded(
