@@ -3,7 +3,7 @@ import 'package:http/http.dart';
 import 'package:movie_app/data/core/api_client.dart';
 import 'package:movie_app/data/data_sources/movie_remote_data_source.dart';
 import 'package:movie_app/data/repositories/movie_repository_imple.dart';
-import 'package:movie_app/domain/repsitories/movie_repository.dart';
+import 'package:movie_app/domain/repositories/movie_repository.dart';
 import 'package:movie_app/domain/usecases/get_coming_soon.dart';
 import 'package:movie_app/domain/usecases/get_playing_now.dart';
 import 'package:movie_app/domain/usecases/get_popular.dart';
