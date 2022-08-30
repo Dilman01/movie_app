@@ -10,9 +10,11 @@ import 'package:movie_app/domain/usecases/get_popular.dart';
 import 'package:movie_app/domain/usecases/get_trending.dart';
 import 'package:movie_app/presentation/blocs/movie_backdrop/movie_backdrop_cubit.dart';
 
+import '../domain/usecases/get_movie_detail.dart';
 import '../domain/usecases/get_top_rated.dart';
 import '../presentation/blocs/language/language_bloc.dart';
 import '../presentation/blocs/movie_carousel/movie_carousel_cubit.dart';
+import '../presentation/blocs/movie_detail/movie_detail_cubit.dart';
 import '../presentation/blocs/movie_tabbed/movie_tabbed_cubit.dart';
 
 final getItInstance = GetIt.I;
@@ -43,6 +45,9 @@ Future init() async {
   getItInstance
       .registerLazySingleton<GetTopRated>(() => GetTopRated(getItInstance()));
 
+  getItInstance.registerLazySingleton<GetMovieDetail>(
+      () => GetMovieDetail(getItInstance()));
+
   getItInstance.registerLazySingleton<MovieRepository>(
       () => MovieRepositoryImpl(getItInstance()));
 
@@ -61,6 +66,12 @@ Future init() async {
       getComingSoon: getItInstance(),
       getPlayingNow: getItInstance(),
       getTopRated: getItInstance(),
+    ),
+  );
+
+  getItInstance.registerFactory(
+    () => MovieDetailCubit(
+      getMovieDetail: getItInstance(),
     ),
   );
 

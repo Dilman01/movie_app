@@ -81,9 +81,9 @@ class MovieRepositoryImpl extends MovieRepository {
       final movie = await remoteDataSource.getMovieDetail(id);
       return Right(movie);
     } on SocketException {
-      return Left(AppError(AppErrorType.network));
+      return const Left(AppError(AppErrorType.network));
     } on Exception {
-      return Left(AppError(AppErrorType.api));
+      return const Left(AppError(AppErrorType.api));
     }
   }
 }
