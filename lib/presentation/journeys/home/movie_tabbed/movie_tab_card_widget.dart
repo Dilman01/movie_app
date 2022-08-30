@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:movie_app/common/extensions/string_extensions.dart';
 // import '/common/constants/route_constants.dart';
 
-// import '/common/extensions/string_extensions.dart';
+import '../../movie_detail/movie_detail_screen.dart';
 import '/data/core/api_constants.dart';
-// import '/presentation/journeys/movie_detail/movie_detail_arguments.dart';
+import '/presentation/journeys/movie_detail/movie_detail_arguments.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -24,10 +24,11 @@ class MovieTabCardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // Navigator.of(context).pushNamed(
-        //   RouteList.movieDetail,
-        //   arguments: MovieDetailArguments(movieId),
-        // );
+        Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => MovieDetailScreen(
+            movieDetailArguments: MovieDetailArguments(movieId),
+          ),
+        ));
       },
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
