@@ -9,8 +9,10 @@ import '../../../di/get_it.dart';
 import '../../blocs/cast/cast_cubit.dart';
 import '../../blocs/movie_detail/movie_detail_cubit.dart';
 
+import '../../blocs/videos/videos_cubit.dart';
 import 'big_poster.dart';
 import 'movie_detail_arguments.dart';
+import 'videos_widget.dart';
 
 class MovieDetailScreen extends StatefulWidget {
   final MovieDetailArguments movieDetailArguments;
@@ -27,12 +29,14 @@ class MovieDetailScreen extends StatefulWidget {
 class _MovieDetailScreenState extends State<MovieDetailScreen> {
   late MovieDetailCubit _movieDetailCubit;
   late CastCubit _castCubit;
+  late VideosCubit _videosCubit;
 
   @override
   void initState() {
     super.initState();
     _movieDetailCubit = getItInstance<MovieDetailCubit>();
     _castCubit = _movieDetailCubit.castBloc;
+    _videosCubit = _movieDetailCubit.videosCubit;
 
     _movieDetailCubit.loadMovieDetail(widget.movieDetailArguments.movieId);
   }
@@ -41,6 +45,7 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
   void dispose() {
     _movieDetailCubit.close();
     _castCubit.close();
+    _videosCubit.close();
     super.dispose();
   }
 
@@ -51,6 +56,7 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
         providers: [
           BlocProvider.value(value: _movieDetailCubit),
           BlocProvider.value(value: _castCubit),
+          BlocProvider.value(value: _videosCubit),
         ],
         child: BlocBuilder<MovieDetailCubit, MovieDetailState>(
           builder: (context, state) {
@@ -82,6 +88,7 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
                       ),
                     ),
                     CastWidget(),
+                    VideosWidget(videosCubit: _videosCubit),
                   ],
                 ),
               );

@@ -24,6 +24,7 @@ import '../presentation/blocs/language/language_cubit.dart';
 import '../presentation/blocs/movie_carousel/movie_carousel_cubit.dart';
 import '../presentation/blocs/movie_detail/movie_detail_cubit.dart';
 import '../presentation/blocs/movie_tabbed/movie_tabbed_cubit.dart';
+import '../presentation/blocs/videos/videos_cubit.dart';
 
 final getItInstance = GetIt.I;
 
@@ -99,6 +100,7 @@ Future init() async {
     () => MovieDetailCubit(
       getMovieDetail: getItInstance(),
       castBloc: getItInstance(),
+      videosCubit: getItInstance(),
     ),
   );
 
@@ -108,11 +110,11 @@ Future init() async {
     ),
   );
 
-  // getItInstance.registerFactory(
-  //   () => VideosCubit(
-  //     getVideos: getItInstance(),
-  //   ),
-  // );
+  getItInstance.registerFactory(
+    () => VideosCubit(
+      getVideos: getItInstance(),
+    ),
+  );
 
   getItInstance.registerSingleton<LanguageCubit>(LanguageCubit(
     updateLanguage: getItInstance(),
