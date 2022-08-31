@@ -17,6 +17,7 @@ import '../domain/usecases/get_cast.dart';
 import '../domain/usecases/get_movie_detail.dart';
 import '../domain/usecases/get_preferred_language.dart';
 import '../domain/usecases/get_top_rated.dart';
+import '../domain/usecases/get_videos.dart';
 import '../domain/usecases/update_language.dart';
 import '../presentation/blocs/cast/cast_cubit.dart';
 import '../presentation/blocs/language/language_cubit.dart';
@@ -56,6 +57,9 @@ Future init() async {
       .registerLazySingleton<GetTopRated>(() => GetTopRated(getItInstance()));
 
   getItInstance.registerLazySingleton<GetCast>(() => GetCast(getItInstance()));
+
+  getItInstance
+      .registerLazySingleton<GetVideos>(() => GetVideos(getItInstance()));
 
   getItInstance.registerLazySingleton<GetMovieDetail>(
       () => GetMovieDetail(getItInstance()));
@@ -103,6 +107,12 @@ Future init() async {
       getCast: getItInstance(),
     ),
   );
+
+  // getItInstance.registerFactory(
+  //   () => VideosCubit(
+  //     getVideos: getItInstance(),
+  //   ),
+  // );
 
   getItInstance.registerSingleton<LanguageCubit>(LanguageCubit(
     updateLanguage: getItInstance(),
