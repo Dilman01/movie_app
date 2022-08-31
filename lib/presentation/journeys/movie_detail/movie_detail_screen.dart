@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:movie_app/presentation/journeys/movie_detail/cast_widget.dart';
 
 import '../../../common/constants/translation_constants.dart';
 import '../../../common/extensions/string_extensions.dart';
 import '../../../di/get_it.dart';
+import '../../blocs/cast/cast_cubit.dart';
 import '../../blocs/movie_detail/movie_detail_cubit.dart';
 
 import 'big_poster.dart';
@@ -24,11 +26,13 @@ class MovieDetailScreen extends StatefulWidget {
 
 class _MovieDetailScreenState extends State<MovieDetailScreen> {
   late MovieDetailCubit _movieDetailCubit;
+  late CastCubit _castCubit;
 
   @override
   void initState() {
     super.initState();
     _movieDetailCubit = getItInstance<MovieDetailCubit>();
+    _castCubit = _movieDetailCubit.castBloc;
 
     _movieDetailCubit.loadMovieDetail(widget.movieDetailArguments.movieId);
   }
@@ -36,7 +40,7 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
   @override
   void dispose() {
     _movieDetailCubit.close();
-
+    _castCubit.close();
     super.dispose();
   }
 
@@ -46,6 +50,7 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
       body: MultiBlocProvider(
         providers: [
           BlocProvider.value(value: _movieDetailCubit),
+          BlocProvider.value(value: _castCubit),
         ],
         child: BlocBuilder<MovieDetailCubit, MovieDetailState>(
           builder: (context, state) {
@@ -76,6 +81,7 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
                         style: Theme.of(context).textTheme.headline6,
                       ),
                     ),
+                    CastWidget(),
                   ],
                 ),
               );

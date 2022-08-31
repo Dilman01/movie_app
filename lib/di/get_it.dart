@@ -13,10 +13,12 @@ import 'package:movie_app/presentation/blocs/movie_backdrop/movie_backdrop_cubit
 import '../data/data_sources/language_local_data_source.dart';
 import '../data/repositories/app_repository_impl.dart';
 import '../domain/repositories/app_repository.dart';
+import '../domain/usecases/get_cast.dart';
 import '../domain/usecases/get_movie_detail.dart';
 import '../domain/usecases/get_preferred_language.dart';
 import '../domain/usecases/get_top_rated.dart';
 import '../domain/usecases/update_language.dart';
+import '../presentation/blocs/cast/cast_cubit.dart';
 import '../presentation/blocs/language/language_cubit.dart';
 import '../presentation/blocs/movie_carousel/movie_carousel_cubit.dart';
 import '../presentation/blocs/movie_detail/movie_detail_cubit.dart';
@@ -52,6 +54,8 @@ Future init() async {
 
   getItInstance
       .registerLazySingleton<GetTopRated>(() => GetTopRated(getItInstance()));
+
+  getItInstance.registerLazySingleton<GetCast>(() => GetCast(getItInstance()));
 
   getItInstance.registerLazySingleton<GetMovieDetail>(
       () => GetMovieDetail(getItInstance()));
@@ -90,6 +94,13 @@ Future init() async {
   getItInstance.registerFactory(
     () => MovieDetailCubit(
       getMovieDetail: getItInstance(),
+      castBloc: getItInstance(),
+    ),
+  );
+
+  getItInstance.registerFactory(
+    () => CastCubit(
+      getCast: getItInstance(),
     ),
   );
 
