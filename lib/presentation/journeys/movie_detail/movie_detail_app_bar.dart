@@ -14,13 +14,13 @@ class MovieDetailAppBar extends StatelessWidget {
           child: Icon(
             Icons.arrow_back_ios,
             color: Colors.white,
-            size: 32.h,
+            size: 40.h,
           ),
         ),
         Icon(
           Icons.favorite_border,
           color: Colors.white,
-          size: 32.h,
+          size: 40.h,
         ),
       ],
     );
