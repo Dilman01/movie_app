@@ -49,21 +49,21 @@ class MovieModel extends MovieEntity {
 
   factory MovieModel.fromJson(Map<String, dynamic> json) {
     return MovieModel(
-      adult: json['adult'],
-      backdropPath: json['backdrop_path'],
-      id: json['id'],
-      title: json['title'],
-      originalLanguage: json['original_language'],
-      originalTitle: json['original_title'],
-      overview: json['overview'],
-      posterPath: json['poster_path'],
-      mediaType: json['media_type'],
+      adult: json['adult'] ?? '',
+      backdropPath: json['backdrop_path'] ?? '',
+      id: json['id'] ?? '',
+      title: json['title'] ?? '',
+      originalLanguage: json['original_language'] ?? '',
+      originalTitle: json['original_title'] ?? '',
+      overview: json['overview'] ?? '',
+      posterPath: json['poster_path'] ?? '',
+      mediaType: json['media_type'] ?? '',
       genreIds: json['genre_ids'].cast<int>(),
       popularity: json['popularity']?.toDouble() ?? 0.0,
-      releaseDate: json['release_date'],
-      video: json['video'],
+      releaseDate: json['release_date'] ?? '',
+      video: json['video'] ?? '',
       voteAverage: json['vote_average']?.toDouble() ?? 0.0,
-      voteCount: json['vote_count'],
+      voteCount: json['vote_count'] ?? '',
     );
   }
 
