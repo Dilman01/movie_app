@@ -9,6 +9,8 @@ class ApiClient {
   ApiClient(this._client);
 // dynamic is the return type because this can return any type of model
   dynamic get(String path, {Map<dynamic, dynamic>? params}) async {
+    await Future.delayed(const Duration(milliseconds: 500));
+
     final url = Uri.parse(getPath(path, params));
 
 // Keep headers as JSON because TMDb API will result in JSON format.

@@ -5,6 +5,7 @@ import 'package:movie_app/presentation/blocs/movie_carousel/movie_carousel_cubit
 import 'package:movie_app/presentation/blocs/movie_tabbed/movie_tabbed_cubit.dart';
 import 'package:movie_app/presentation/journeys/drawer/navigation_drawer.dart';
 import 'package:movie_app/presentation/journeys/home/movie_tabbed/movie_tabbed_widget.dart';
+import '../../blocs/search_movie/search_movie_cubit.dart';
 import '../../widgets/app_error_widget.dart';
 import '/di/get_it.dart';
 
@@ -16,28 +17,31 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  MovieCarouselCubit? movieCarouselCubit;
-  MovieBackdropCubit? movieBackdropCubit;
-  MovieTabbedCubit? movieTabbedCubit;
+  late MovieCarouselCubit movieCarouselCubit;
+  late MovieBackdropCubit movieBackdropCubit;
+  late MovieTabbedCubit movieTabbedCubit;
+  late SearchMovieCubit searchMovieCubit;
 
   @override
   void initState() {
     super.initState();
     movieCarouselCubit = getItInstance<MovieCarouselCubit>();
-    movieBackdropCubit = movieCarouselCubit!.movieBackdropCubit;
+    movieBackdropCubit = movieCarouselCubit.movieBackdropCubit;
     movieTabbedCubit = getItInstance<MovieTabbedCubit>();
+    searchMovieCubit = getItInstance<SearchMovieCubit>();
     // When the home screen initializes,
     // dispatch the only event for MovieCarouselBloc
     // This will make an API call and yield the MovieCarouselLoaded or MovieCarouselError state.
-    movieCarouselCubit!.loadCarousel();
+    movieCarouselCubit.loadCarousel();
   }
 
   @override
   void dispose() {
     super.dispose();
-    movieCarouselCubit!.close();
-    movieBackdropCubit!.close();
-    movieTabbedCubit?.close();
+    movieCarouselCubit.close();
+    movieBackdropCubit.close();
+    movieTabbedCubit.close();
+    searchMovieCubit.close();
   }
 
   @override
@@ -45,13 +49,16 @@ class _HomeScreenState extends State<HomeScreen> {
     return MultiBlocProvider(
       providers: [
         BlocProvider<MovieCarouselCubit>(
-          create: (context) => movieCarouselCubit!,
+          create: (context) => movieCarouselCubit,
         ),
         BlocProvider<MovieBackdropCubit>(
-          create: (context) => movieBackdropCubit!,
+          create: (context) => movieBackdropCubit,
         ),
         BlocProvider<MovieTabbedCubit>(
-          create: (context) => movieTabbedCubit!,
+          create: (context) => movieTabbedCubit,
+        ),
+        BlocProvider.value(
+          value: searchMovieCubit,
         ),
       ],
       child: Scaffold(
@@ -83,7 +90,7 @@ class _HomeScreenState extends State<HomeScreen> {
               );
             } else if (state is MovieCarouselError) {
               return AppErrorWidget(
-                onPressed: () => movieCarouselCubit!.loadCarousel(),
+                onPressed: () => movieCarouselCubit.loadCarousel(),
                 errorType: state.errorType,
               );
             }

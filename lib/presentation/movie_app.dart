@@ -60,7 +60,16 @@ class _MovieAppState extends State<MovieApp> {
                   scaffoldBackgroundColor: AppColor.vulcan,
                   visualDensity: VisualDensity.adaptivePlatformDensity,
                   textTheme: ThemeText.getTextTheme(),
-                  appBarTheme: const AppBarTheme(elevation: 0),
+                  appBarTheme: const AppBarTheme(
+                      elevation: 0, backgroundColor: AppColor.vulcan),
+                  inputDecorationTheme: InputDecorationTheme(
+                    hintStyle: Theme.of(context).textTheme.greySubtitle1,
+                    focusedBorder: const UnderlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
                 ),
                 supportedLocales:
                     Languages.languages.map((e) => Locale(e.code)).toList(),
