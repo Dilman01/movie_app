@@ -18,12 +18,14 @@ import '../domain/usecases/get_movie_detail.dart';
 import '../domain/usecases/get_preferred_language.dart';
 import '../domain/usecases/get_top_rated.dart';
 import '../domain/usecases/get_videos.dart';
+import '../domain/usecases/search_movies.dart';
 import '../domain/usecases/update_language.dart';
 import '../presentation/blocs/cast/cast_cubit.dart';
 import '../presentation/blocs/language/language_cubit.dart';
 import '../presentation/blocs/movie_carousel/movie_carousel_cubit.dart';
 import '../presentation/blocs/movie_detail/movie_detail_cubit.dart';
 import '../presentation/blocs/movie_tabbed/movie_tabbed_cubit.dart';
+import '../presentation/blocs/search_movie/search_movie_cubit.dart';
 import '../presentation/blocs/videos/videos_cubit.dart';
 
 final getItInstance = GetIt.I;
@@ -61,6 +63,9 @@ Future init() async {
 
   getItInstance
       .registerLazySingleton<GetVideos>(() => GetVideos(getItInstance()));
+
+  getItInstance
+      .registerLazySingleton<SearchMovies>(() => SearchMovies(getItInstance()));
 
   getItInstance.registerLazySingleton<GetMovieDetail>(
       () => GetMovieDetail(getItInstance()));
@@ -113,6 +118,12 @@ Future init() async {
   getItInstance.registerFactory(
     () => VideosCubit(
       getVideos: getItInstance(),
+    ),
+  );
+
+  getItInstance.registerFactory(
+    () => SearchMovieCubit(
+      searchMovies: getItInstance(),
     ),
   );
 
