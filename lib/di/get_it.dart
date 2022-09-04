@@ -11,6 +11,7 @@ import 'package:movie_app/domain/usecases/get_trending.dart';
 import 'package:movie_app/presentation/blocs/movie_backdrop/movie_backdrop_cubit.dart';
 
 import '../data/data_sources/language_local_data_source.dart';
+import '../data/data_sources/movie_local_data_source.dart';
 import '../data/repositories/app_repository_impl.dart';
 import '../domain/repositories/app_repository.dart';
 import '../domain/usecases/get_cast.dart';
@@ -40,6 +41,9 @@ Future init() async {
 
   getItInstance.registerLazySingleton<MovieRemoteDataSource>(
       () => MovieRemoteDataSourceImpl(getItInstance()));
+
+  getItInstance.registerLazySingleton<MovieLocalDataSource>(
+      () => MovieLocalDataSourceImpl());
 
   getItInstance.registerLazySingleton<LanguageLocalDataSource>(
       () => LanguageLocalDataSourceImpl());
@@ -77,7 +81,7 @@ Future init() async {
       () => GetPreferredLanguage(getItInstance()));
 
   getItInstance.registerLazySingleton<MovieRepository>(
-      () => MovieRepositoryImpl(getItInstance()));
+      () => MovieRepositoryImpl(getItInstance(), getItInstance()));
 
   getItInstance.registerLazySingleton<AppRepository>(() => AppRepositoryImpl(
         getItInstance(),
