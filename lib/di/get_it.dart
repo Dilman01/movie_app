@@ -14,11 +14,15 @@ import '../data/data_sources/language_local_data_source.dart';
 import '../data/data_sources/movie_local_data_source.dart';
 import '../data/repositories/app_repository_impl.dart';
 import '../domain/repositories/app_repository.dart';
+import '../domain/usecases/check_if_movie_favorite.dart';
+import '../domain/usecases/delete_favorite_movie.dart';
 import '../domain/usecases/get_cast.dart';
+import '../domain/usecases/get_favorite_movies.dart';
 import '../domain/usecases/get_movie_detail.dart';
 import '../domain/usecases/get_preferred_language.dart';
 import '../domain/usecases/get_top_rated.dart';
 import '../domain/usecases/get_videos.dart';
+import '../domain/usecases/save_movie.dart';
 import '../domain/usecases/search_movies.dart';
 import '../domain/usecases/update_language.dart';
 import '../presentation/blocs/cast/cast_cubit.dart';
@@ -73,6 +77,18 @@ Future init() async {
 
   getItInstance.registerLazySingleton<GetMovieDetail>(
       () => GetMovieDetail(getItInstance()));
+
+  getItInstance
+      .registerLazySingleton<SaveMovie>(() => SaveMovie(getItInstance()));
+
+  getItInstance.registerLazySingleton<GetFavoriteMovies>(
+      () => GetFavoriteMovies(getItInstance()));
+
+  getItInstance.registerLazySingleton<DeleteFavoriteMovie>(
+      () => DeleteFavoriteMovie(getItInstance()));
+
+  getItInstance.registerLazySingleton<CheckIfFavoriteMovie>(
+      () => CheckIfFavoriteMovie(getItInstance()));
 
   getItInstance.registerLazySingleton<UpdateLanguage>(
       () => UpdateLanguage(getItInstance()));
