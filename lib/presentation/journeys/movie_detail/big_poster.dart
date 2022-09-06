@@ -60,7 +60,7 @@ class BigPoster extends StatelessWidget {
           left: 16.w,
           right: 16.w,
           top: 45.h,
-          child: MovieDetailAppBar(),
+          child: MovieDetailAppBar(movieDetailEntity: movie),
         ),
       ],
     );

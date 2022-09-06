@@ -26,6 +26,7 @@ import '../domain/usecases/save_movie.dart';
 import '../domain/usecases/search_movies.dart';
 import '../domain/usecases/update_language.dart';
 import '../presentation/blocs/cast/cast_cubit.dart';
+import '../presentation/blocs/favorite/favorite_cubit.dart';
 import '../presentation/blocs/language/language_cubit.dart';
 import '../presentation/blocs/movie_carousel/movie_carousel_cubit.dart';
 import '../presentation/blocs/movie_detail/movie_detail_cubit.dart';
@@ -126,6 +127,7 @@ Future init() async {
       getMovieDetail: getItInstance(),
       castBloc: getItInstance(),
       videosCubit: getItInstance(),
+      favoriteCubit: getItInstance(),
     ),
   );
 
@@ -151,4 +153,11 @@ Future init() async {
     updateLanguage: getItInstance(),
     getPreferredLanguage: getItInstance(),
   ));
+
+  getItInstance.registerFactory(() => FavoriteCubit(
+        saveMovie: getItInstance(),
+        checkIfFavoriteMovie: getItInstance(),
+        deleteFavoriteMovie: getItInstance(),
+        getFavoriteMovies: getItInstance(),
+      ));
 }
