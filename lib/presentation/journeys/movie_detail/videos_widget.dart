@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../common/constants/route_constants.dart';
 import '../../../common/constants/translation_constants.dart';
 import '../../blocs/videos/videos_cubit.dart';
 import '../../widgets/button.dart';
@@ -24,12 +25,9 @@ class VideosWidget extends StatelessWidget {
           return Button(
             text: TranslationConstants.watchTrailers,
             onPressed: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => WatchVideoScreen(
-                    watchVideoArguments: WatchVideoArguments(_videos),
-                  ),
-                ),
+              Navigator.of(context).pushNamed(
+                RouteList.watchTrailer,
+                arguments: WatchVideoArguments(_videos),
               );
             },
           );

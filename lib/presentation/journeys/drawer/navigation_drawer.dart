@@ -9,6 +9,7 @@ import 'package:movie_app/common/extensions/string_extensions.dart';
 import 'package:movie_app/presentation/app_localizations.dart';
 import 'package:wiredash/wiredash.dart';
 
+import '../../../common/constants/route_constants.dart';
 import '../../blocs/language/language_cubit.dart';
 import '../../widgets/app_dialog.dart';
 import '../favorite/favorite_screen.dart';
@@ -49,11 +50,7 @@ class NavigationDrawer extends StatelessWidget {
             NavigationListItem(
               title: TranslationConstants.favoriteMovies.t(context),
               onPressed: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => FavoriteScreen(),
-                  ),
-                );
+                Navigator.of(context).pushNamed(RouteList.favorite);
               },
             ),
             NavigationExpandedListItem(

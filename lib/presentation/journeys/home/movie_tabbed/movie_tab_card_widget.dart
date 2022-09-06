@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:movie_app/common/extensions/string_extensions.dart';
 // import '/common/constants/route_constants.dart';
 
+import '../../../../common/constants/route_constants.dart';
 import '../../movie_detail/movie_detail_screen.dart';
 import '/data/core/api_constants.dart';
 import '/presentation/journeys/movie_detail/movie_detail_arguments.dart';
@@ -24,11 +25,10 @@ class MovieTabCardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => MovieDetailScreen(
-            movieDetailArguments: MovieDetailArguments(movieId),
-          ),
-        ));
+        Navigator.of(context).pushNamed(
+          RouteList.movieDetail,
+          arguments: MovieDetailArguments(movieId),
+        );
       },
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
