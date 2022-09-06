@@ -29,6 +29,7 @@ class _MovieAppState extends State<MovieApp> {
   @override
   void initState() {
     _languageCubit = getItInstance<LanguageCubit>();
+    _languageCubit.loadPreferredLanguage();
     super.initState();
   }
 

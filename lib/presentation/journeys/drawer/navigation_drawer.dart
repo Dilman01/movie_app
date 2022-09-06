@@ -11,6 +11,7 @@ import 'package:wiredash/wiredash.dart';
 
 import '../../blocs/language/language_cubit.dart';
 import '../../widgets/app_dialog.dart';
+import '../favorite/favorite_screen.dart';
 import '/presentation/journeys/drawer/navigation_expanded_list_item.dart';
 import '/presentation/journeys/drawer/navigation_list_item.dart';
 import '/presentation/widgets/logo.dart';
@@ -47,7 +48,13 @@ class NavigationDrawer extends StatelessWidget {
             ),
             NavigationListItem(
               title: TranslationConstants.favoriteMovies.t(context),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => FavoriteScreen(),
+                  ),
+                );
+              },
             ),
             NavigationExpandedListItem(
               title: TranslationConstants.language.t(context),
