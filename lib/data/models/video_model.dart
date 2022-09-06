@@ -40,14 +40,14 @@ class VideoModel extends VideoEntity {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['iso_639_1'] = this.iso6391;
-    data['iso_3166_1'] = this.iso31661;
-    data['key'] = this.key;
-    data['name'] = this.name;
-    data['site'] = this.site;
-    data['size'] = this.size;
-    data['type'] = this.type;
+    data['id'] = id;
+    data['iso_639_1'] = iso6391;
+    data['iso_3166_1'] = iso31661;
+    data['key'] = key;
+    data['name'] = name;
+    data['site'] = site;
+    data['size'] = size;
+    data['type'] = type;
     return data;
   }
 }
