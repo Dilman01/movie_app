@@ -28,6 +28,7 @@ import '../domain/usecases/update_language.dart';
 import '../presentation/blocs/cast/cast_cubit.dart';
 import '../presentation/blocs/favorite/favorite_cubit.dart';
 import '../presentation/blocs/language/language_cubit.dart';
+import '../presentation/blocs/loading/loading_cubit.dart';
 import '../presentation/blocs/movie_carousel/movie_carousel_cubit.dart';
 import '../presentation/blocs/movie_detail/movie_detail_cubit.dart';
 import '../presentation/blocs/movie_tabbed/movie_tabbed_cubit.dart';
@@ -110,6 +111,7 @@ Future init() async {
     () => MovieCarouselCubit(
       getTrending: getItInstance(),
       movieBackdropCubit: getItInstance(),
+      loadingCubit: getItInstance(),
     ),
   );
 
@@ -128,6 +130,7 @@ Future init() async {
       castBloc: getItInstance(),
       videosCubit: getItInstance(),
       favoriteCubit: getItInstance(),
+      loadingCubit: getItInstance(),
     ),
   );
 
@@ -146,6 +149,7 @@ Future init() async {
   getItInstance.registerFactory(
     () => SearchMovieCubit(
       searchMovies: getItInstance(),
+      loadingCubit: getItInstance(),
     ),
   );
 
@@ -160,4 +164,6 @@ Future init() async {
         deleteFavoriteMovie: getItInstance(),
         getFavoriteMovies: getItInstance(),
       ));
+
+  getItInstance.registerSingleton<LoadingCubit>(LoadingCubit());
 }

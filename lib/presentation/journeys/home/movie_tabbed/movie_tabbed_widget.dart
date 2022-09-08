@@ -6,8 +6,7 @@ import '../../../../common/constants/translation_constants.dart';
 import '../../../widgets/app_error_widget.dart';
 import '/presentation/blocs/movie_tabbed/movie_tabbed_cubit.dart';
 import '/presentation/journeys/home/movie_tabbed/tab_title_widget.dart';
-// import '/presentation/journeys/loading/loading_circle.dart';
-// import '/presentation/widgets/app_error_widget.dart';
+import '/presentation/journeys/loading/loading_circle.dart';
 
 import 'movie_list_view_builder.dart';
 import 'movie_tabbed_constants.dart';
@@ -83,14 +82,14 @@ class _MovieTabbedWidgetState extends State<MovieTabbedWidget>
                     ),
                   ),
                 ),
-              // if (state is MovieTabLoading)
-              // Expanded(
-              //   child: Center(
-              //     // child: LoadingCircle(
-              //     //   size: 100.w,
-              //     // ),
-              //   ),
-              // ),
+              if (state is MovieTabLoading)
+                Expanded(
+                  child: Center(
+                    child: LoadingCircle(
+                      size: 150.w,
+                    ),
+                  ),
+                ),
             ],
           ),
         );

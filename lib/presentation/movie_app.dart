@@ -12,9 +12,12 @@ import 'package:movie_app/presentation/wiredash_app.dart';
 import '../common/constants/route_constants.dart';
 import 'app_localizations.dart';
 import 'blocs/language/language_cubit.dart';
+import 'blocs/loading/loading_cubit.dart';
 import 'fade_page_route_builder.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import 'journeys/loading/loading_screen.dart';
 
 class MovieApp extends StatefulWidget {
   const MovieApp({super.key});
@@ -24,35 +27,37 @@ class MovieApp extends StatefulWidget {
 }
 
 class _MovieAppState extends State<MovieApp> {
-  // late final _navigatorKey = GlobalKey<NavigatorState>();
   late LanguageCubit _languageCubit;
+  late LoadingCubit _loadingCubit;
 
   @override
   void initState() {
     _languageCubit = getItInstance<LanguageCubit>();
     _languageCubit.loadPreferredLanguage();
+    _loadingCubit = getItInstance<LoadingCubit>();
     super.initState();
   }
 
   @override
   void dispose() {
     _languageCubit.close();
+    _loadingCubit.close();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      builder: (context, child) => BlocProvider<LanguageCubit>.value(
-        value: _languageCubit,
+      builder: (context, child) => MultiBlocProvider(
+        providers: [
+          BlocProvider<LanguageCubit>.value(value: _languageCubit),
+          BlocProvider<LoadingCubit>.value(value: _loadingCubit),
+        ],
         child: BlocBuilder<LanguageCubit, Locale>(
           builder: (context, locale) {
-            // if (locale is LanguageLoaded) {
             return WiredashApp(
-              // navigatorKey: _navigatorKey,
               languageCode: locale.languageCode,
               child: MaterialApp(
-                // navigatorKey: _navigatorKey,
                 debugShowCheckedModeBanner: false,
                 title: 'Movie App',
                 theme: ThemeData(
@@ -82,6 +87,11 @@ class _MovieAppState extends State<MovieApp> {
                   GlobalCupertinoLocalizations.delegate,
                   GlobalWidgetsLocalizations.delegate,
                 ],
+                builder: (context, child) {
+                  return LoadingScreen(
+                    screen: child!,
+                  );
+                },
                 initialRoute: RouteList.initial,
                 onGenerateRoute: (RouteSettings settings) {
                   final routes = Routes.getRoutes(settings);
@@ -93,9 +103,6 @@ class _MovieAppState extends State<MovieApp> {
                 },
               ),
             );
-            // }
-
-            // return const SizedBox.shrink();
           },
         ),
       ),
