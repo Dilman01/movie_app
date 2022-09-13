@@ -5,6 +5,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../domain/entities/movie_detail_entity.dart';
 import '../../../domain/entities/movie_entity.dart';
 import '../../blocs/favorite/favorite_cubit.dart';
+import '../../blocs/theme/theme_cubit.dart';
+import '../../themes/theme_color.dart';
 
 class MovieDetailAppBar extends StatelessWidget {
   final MovieDetailEntity movieDetailEntity;
@@ -24,7 +26,9 @@ class MovieDetailAppBar extends StatelessWidget {
           },
           child: Icon(
             Icons.arrow_back_ios,
-            color: Colors.white,
+            color: context.read<ThemeCubit>().state == Themes.dark
+                ? Colors.white
+                : AppColor.vulcan,
             size: 40.h,
           ),
         ),
@@ -41,14 +45,18 @@ class MovieDetailAppBar extends StatelessWidget {
                   state.isMovieFavorite
                       ? Icons.favorite
                       : Icons.favorite_border,
-                  color: Colors.white,
+                  color: context.read<ThemeCubit>().state == Themes.dark
+                      ? Colors.white
+                      : AppColor.vulcan,
                   size: 40.h,
                 ),
               );
             } else {
               return Icon(
                 Icons.favorite_border,
-                color: Colors.white,
+                color: context.read<ThemeCubit>().state == Themes.dark
+                    ? Colors.white
+                    : AppColor.vulcan,
                 size: 40.h,
               );
             }

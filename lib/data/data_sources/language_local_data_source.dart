@@ -5,8 +5,8 @@ import 'package:hive/hive.dart';
 abstract class LanguageLocalDataSource {
   Future<void> updateLanguage(String languageCode);
   Future<String> getPreferredLanguage();
-  // Future<void> updateTheme(String themeName);
-  // Future<String> getPreferredTheme();
+  Future<void> updateTheme(String themeName);
+  Future<String> getPreferredTheme();
 }
 
 class LanguageLocalDataSourceImpl extends LanguageLocalDataSource {
@@ -22,15 +22,15 @@ class LanguageLocalDataSourceImpl extends LanguageLocalDataSource {
     unawaited(languageBox.put('preferred_language', languageCode));
   }
 
-  // @override
-  // Future<String> getPreferredTheme() async {
-  //   final themeBox = await Hive.openBox('themeBox');
-  //   return themeBox.get('preferred_theme') ?? 'dark';
-  // }
+  @override
+  Future<String> getPreferredTheme() async {
+    final themeBox = await Hive.openBox('themeBox');
+    return themeBox.get('preferred_theme') ?? 'dark';
+  }
 
-  // @override
-  // Future<void> updateTheme(String themeName) async {
-  //   final themeBox = await Hive.openBox('themeBox');
-  //   unawaited(themeBox.put('preferred_theme', themeName));
-  // }
+  @override
+  Future<void> updateTheme(String themeName) async {
+    final themeBox = await Hive.openBox('themeBox');
+    unawaited(themeBox.put('preferred_theme', themeName));
+  }
 }

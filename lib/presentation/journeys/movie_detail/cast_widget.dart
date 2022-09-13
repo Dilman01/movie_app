@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../data/core/api_constants.dart';
 import '../../blocs/cast/cast_cubit.dart';
+import '../../blocs/theme/theme_cubit.dart';
 import '../../themes/theme_text.dart';
 
 class CastWidget extends StatelessWidget {
@@ -60,7 +61,10 @@ class CastWidget extends StatelessWidget {
                             castEntity.name,
                             overflow: TextOverflow.fade,
                             maxLines: 1,
-                            style: Theme.of(context).textTheme.vulcanBodyText2,
+                            style: context.read<ThemeCubit>().state ==
+                                    Themes.dark
+                                ? Theme.of(context).textTheme.vulcanBodyText2
+                                : Theme.of(context).textTheme.whiteBodyText2,
                           ),
                         ),
                         Padding(

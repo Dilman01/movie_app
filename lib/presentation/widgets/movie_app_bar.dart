@@ -7,7 +7,9 @@ import 'package:movie_app/presentation/widgets/logo.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../blocs/search_movie/search_movie_cubit.dart';
+import '../blocs/theme/theme_cubit.dart';
 import '../journeys/search_movie/custom_search_movie_delegate.dart';
+import '../themes/theme_color.dart';
 
 class MovieAppBar extends StatelessWidget {
   @override
@@ -27,6 +29,9 @@ class MovieAppBar extends StatelessWidget {
             icon: SvgPicture.asset(
               'assets/svgs/menu.svg',
               height: 32.h,
+              color: context.read<ThemeCubit>().state == Themes.dark
+                  ? Colors.white
+                  : AppColor.vulcan,
             ),
           ),
           Expanded(
@@ -45,7 +50,9 @@ class MovieAppBar extends StatelessWidget {
             },
             icon: Icon(
               Icons.search,
-              color: Colors.white,
+              color: context.read<ThemeCubit>().state == Themes.dark
+                  ? Colors.white
+                  : AppColor.vulcan,
               size: 32.h,
             ),
           ),
