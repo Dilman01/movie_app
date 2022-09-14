@@ -28,4 +28,6 @@ Your Guide to The World of Movies.
 - youtube_player_flutter: ^8.1.0 (for playing YouTube videos)
 - flare_flutter: ^3.0.2 (for animations)
 
-
+## Author
+- Twitter: [@Dilman01](https://twitter.com/dilman01)
+- Github: [@Dilman01](https://github.com/Dilman01)
