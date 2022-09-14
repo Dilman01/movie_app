@@ -11,6 +11,16 @@ Your Guide to The World of Movies.
 * Change the language to Spanish or English.
 * Send a feedback in case of any errors or suggetions.
 
+## Screenshots
+Home Screen             |  Detail Screen              |  Trailers Screen
+:-------------------------:|:-------------------------: |:-------------------------:
+![](screenshots/Screenshot_20220915-001506.jpg)  |  ![](screenshots/Screenshot_20220915-001534.jpg) | ![](screenshots/Screenshot_20220915-001622.jpg)
+
+Search Screen             | Drawer              | Favorite Screen
+:-------------------------:|:-------------------------: |:-------------------------:
+![](screenshots/Screenshot_20220915-001645.jpg)  |  ![](screenshots/Screenshot_20220915-001657.jpg) | ![](screenshots/Screenshot_20220915-001709.jpg)
+
+
 ## Technologies and Packages used
 - equatable: ^2.0.5 (for comparison of objects)
 - http: ^0.13.4 (for network calls)
