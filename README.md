@@ -1,7 +1,7 @@
-# movie_app
+# Movie App
 
 A new Flutter project.
-
+![](assets/icons/logo.png)
 ## Getting Started
 
 This project is a starting point for a Flutter application.
