@@ -163,7 +163,7 @@ class MovieRepositoryImpl extends MovieRepository {
   Future<Either<AppError, void>> saveMovie(MovieEntity movieEntity) async {
     try {
       final table = MovieTable.fromMovieEntity(movieEntity);
-      print(table);
+
       final response = await localDataSource
           .saveMovie(MovieTable.fromMovieEntity(movieEntity));
       return Right(response);

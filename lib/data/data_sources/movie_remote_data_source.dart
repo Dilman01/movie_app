@@ -30,7 +30,7 @@ class MovieRemoteDataSourceImpl extends MovieRemoteDataSource {
     final response = await _client.get('trending/movie/day');
     final movies = MoviesResultModel.fromJson(response)
         .movies; // get movies from the MovieResultModel
-    print(movies);
+
     return movies!;
   }
 
@@ -39,7 +39,7 @@ class MovieRemoteDataSourceImpl extends MovieRemoteDataSource {
     final response = await _client.get('movie/popular');
     final movies = MoviesResultModel.fromJson(response)
         .movies; // to parse the JSON response to the model
-    print(movies);
+
     return movies!;
   }
 
@@ -47,7 +47,7 @@ class MovieRemoteDataSourceImpl extends MovieRemoteDataSource {
   Future<List<MovieModel>> getComingSoon() async {
     final response = await _client.get('movie/upcoming');
     final movies = MoviesResultModel.fromJson(response).movies;
-    print(movies);
+
     return movies!;
   }
 
@@ -55,7 +55,7 @@ class MovieRemoteDataSourceImpl extends MovieRemoteDataSource {
   Future<List<MovieModel>> getPlayingNow() async {
     final response = await _client.get('movie/now_playing');
     final movies = MoviesResultModel.fromJson(response).movies;
-    print(movies);
+
     return movies!;
   }
 
@@ -63,7 +63,7 @@ class MovieRemoteDataSourceImpl extends MovieRemoteDataSource {
   Future<List<MovieModel>> getTopRated() async {
     final response = await _client.get('movie/top_rated');
     final movies = MoviesResultModel.fromJson(response).movies;
-    print(movies);
+
     return movies!;
   }
 
@@ -71,7 +71,7 @@ class MovieRemoteDataSourceImpl extends MovieRemoteDataSource {
   Future<MovieDetailModel> getMovieDetail(int id) async {
     final response = await _client.get('movie/$id');
     final movie = MovieDetailModel.fromJson(response);
-    print(movie);
+
     return movie;
   }
 
@@ -95,7 +95,7 @@ class MovieRemoteDataSourceImpl extends MovieRemoteDataSource {
       'query': searchTerm,
     });
     final movies = MoviesResultModel.fromJson(response).movies;
-    print(movies);
+
     return movies;
   }
 }
