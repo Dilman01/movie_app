@@ -6,7 +6,6 @@ import '../loading/loading_cubit.dart';
 import '/domain/entities/movie_entity.dart';
 import '/domain/entities/no_params.dart';
 import '/domain/usecases/get_trending.dart';
-// import '/presentation/blocs/loading/loading_cubit.dart';
 import '/presentation/blocs/movie_backdrop/movie_backdrop_cubit.dart';
 
 part 'movie_carousel_state.dart';

@@ -29,9 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
     movieBackdropCubit = movieCarouselCubit.movieBackdropCubit;
     movieTabbedCubit = getItInstance<MovieTabbedCubit>();
     searchMovieCubit = getItInstance<SearchMovieCubit>();
-    // When the home screen initializes,
-    // dispatch the only event for MovieCarouselBloc
-    // This will make an API call and yield the MovieCarouselLoaded or MovieCarouselError state.
+
     movieCarouselCubit.loadCarousel();
   }
 
@@ -63,9 +61,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ],
       child: Scaffold(
         drawer: const NavigationDrawer(),
-        // to read the current state of MovieCarouselBloc
         body: BlocBuilder<MovieCarouselCubit, MovieCarouselState>(
-          // bloc: movieCarouselCubit,
           builder: (context, state) {
             if (state is MovieCarouselLoaded) {
               return Stack(

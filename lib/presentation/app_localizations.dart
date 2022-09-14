@@ -48,7 +48,6 @@ class _AppLocalizationDelegate extends LocalizationsDelegate<AppLocalizations> {
         .contains(locale.languageCode);
   }
 
-//
   @override
   Future<AppLocalizations> load(Locale locale) async {
     AppLocalizations localizations = AppLocalizations(locale);

@@ -1,10 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:movie_app/common/extensions/string_extensions.dart';
-// import '/common/constants/route_constants.dart';
 
 import '../../../../common/constants/route_constants.dart';
-import '../../movie_detail/movie_detail_screen.dart';
 import '/data/core/api_constants.dart';
 import '/presentation/journeys/movie_detail/movie_detail_arguments.dart';
 

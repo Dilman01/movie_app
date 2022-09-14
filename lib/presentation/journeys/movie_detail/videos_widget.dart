@@ -6,7 +6,6 @@ import '../../../common/constants/translation_constants.dart';
 import '../../blocs/videos/videos_cubit.dart';
 import '../../widgets/button.dart';
 import '../watch_video/watch_video_arguments.dart';
-import '../watch_video/watch_video_screen.dart';
 
 class VideosWidget extends StatelessWidget {
   final VideosCubit videosCubit;

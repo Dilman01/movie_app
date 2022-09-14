@@ -6,7 +6,6 @@ import '../../../data/core/api_constants.dart';
 import '../../../domain/entities/movie_entity.dart';
 import '../../themes/theme_text.dart';
 import '../movie_detail/movie_detail_arguments.dart';
-import '../movie_detail/movie_detail_screen.dart';
 
 class SearchMovieCard extends StatelessWidget {
   final MovieEntity movie;

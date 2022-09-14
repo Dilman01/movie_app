@@ -1,7 +1,3 @@
-// import '/common/constants/translation_constants.dart';
-
-// ignore_for_file: unnecessary_const
-
 import 'package:movie_app/common/constants/translation_constants.dart';
 
 import 'tab.dart';

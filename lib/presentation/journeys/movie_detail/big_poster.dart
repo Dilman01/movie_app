@@ -21,7 +21,6 @@ class BigPoster extends StatelessWidget {
     return Stack(
       children: [
         Container(
-          // padding: EdgeInsets.all(20),
           foregroundDecoration: BoxDecoration(
             gradient: LinearGradient(
               begin: Alignment.topCenter,

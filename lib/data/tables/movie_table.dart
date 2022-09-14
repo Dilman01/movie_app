@@ -1,5 +1,3 @@
-// ignore_for_file: annotate_overrides, overridden_fields
-
 import 'package:hive/hive.dart';
 
 import '../../domain/entities/movie_entity.dart';

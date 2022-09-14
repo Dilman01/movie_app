@@ -6,7 +6,6 @@ import 'movie_tab_card_widget.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MovieListViewBuilder extends StatelessWidget {
-  //1
   final List<MovieEntity> movies;
 
   const MovieListViewBuilder({Key? key, required this.movies})

@@ -43,8 +43,6 @@ final getItInstance = GetIt.I;
 Future init() async {
   getItInstance.registerLazySingleton<Client>(() => Client());
 
-// As, we’ve asked GetIt to initialize Client for us,
-// so we rely on getItInstance() to provide Client to ApiClient instance.
   getItInstance
       .registerLazySingleton<ApiClient>(() => ApiClient(getItInstance()));
 
