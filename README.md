@@ -1,6 +1,6 @@
 # Movie App
 
-A new Flutter project.
+Your Guide to The World of Movies.
 ![](assets/icons/logo.png)
 ## Getting Started
 
