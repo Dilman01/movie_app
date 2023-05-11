@@ -39,5 +39,5 @@ Search Screen             | Drawer              | Favorite Screen
 - flare_flutter: ^3.0.2 (for animations)
 
 ## Author
-- Twitter: [@Dilman01](https://twitter.com/dilman01)
+<!-- - Twitter: [@Dilman01](https://twitter.com/dilman01) -->
 - Github: [@Dilman01](https://github.com/Dilman01)
